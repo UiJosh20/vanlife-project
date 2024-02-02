@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Layout from "./Components/Layout";
 import Home from "./Components/Home";
 import About from "./Components/About";
@@ -9,6 +9,9 @@ import Dashboard from "./Components/Dashboard";
 import IncomePage from "./Components/IncomePage";
 import VanDash from "./Components/VanDash";
 import ReviewDash from "./Components/ReviewDash";
+import Signin from "./Components/Signin";
+import Notfound from "./Components/Notfound";
+
 
 function App() {
   return (
@@ -17,17 +20,29 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />
 
-          <Route path="/host" element={<Host />}>
-              <Route path="/host" element={<Dashboard/>}/>
+
+          <Route path="/home" element={<Navigate to='/' />} />
+          <Route path="/van" element={<Navigate to='/vans' />} />
+          <Route path="/signup" element={<Navigate to='/signin' />} />
+          <Route path="/host/van" element={<Navigate to='/host/vans' />} />
+          <Route path="/host/review" element={<Navigate to='/host/reviews' />} />
+          <Route path="/host/incomes" element={<Navigate to='/host/income' />} />
+
+
+          <Route path="/host" element={<Host/>}>
+            <Route path="/host" element={<Navigate to="/host/dashboard"/>}/>
+              <Route path="/host/dashboard" element={<Dashboard/>}/>
               <Route path="/host/income" element={<IncomePage/>}/>
               <Route path="/host/vans" element={<VanDash/>}/>
               <Route path="/host/reviews" element={<ReviewDash/>}/>
           </Route>
-  
+
           <Route path="/about" element={<About />} />
           <Route path="/vans" element={<Van />} />
           <Route path="/api/vans/:id" element={<Vandetails />} />
+          <Route path="/signin" element={<Signin />} />
         </Route>
+          <Route path="*" element={<Notfound />} />
       </Routes>
     </>
   );

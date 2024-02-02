@@ -1,37 +1,42 @@
-import { NavLink } from "react-router-dom"
-
+import { useEffect } from "react";
+import { NavLink, Navigate } from "react-router-dom";
+import Dashboard from "./Dashboard";
 
 const Hostlink = () => {
   const hostLink = [
     {
-      path:'/host',
-      title:'Dashboard'
+      path: '/host/dashboard',
+      title: 'Dashboard'
     },
     {
-      path:'/host/income',
-      title:'Income'
+      path: '/host/income',
+      title: 'Income'
     },
     {
-      path:'/host/vans',
-      title:'Vans'
+      path: '/host/vans',
+      title: 'Vans'
     },
     {
-      path:'/host/reviews',
-      title:'Reviews'
+      path: '/host/reviews',
+      title: 'Reviews'
     },
-  ]
+  ];
+
+ 
+  
   return (
-    <main>
-      {
-        hostLink.map((link)=>(
-          <NavLink to={link.path} className={({isActive})=>(isActive?"border-b-2 border-black":"text-gray-500")}>
-            {link.title}
-          </NavLink>
-        ))
-      }
-
+    <main className="flex gap-7 lg:p-10 px-5 py-10">
+      {hostLink.map((link, i) => (
+        <NavLink
+          to={link.path}
+          key={i}
+          className={({ isActive }) => isActive ? "border-b-2 border-black font-bold": "text-gray-500" }
+        >
+          {link.title}
+        </NavLink>
+      ))}
     </main>
-  )
-}
+  );
+};
 
-export default Hostlink
+export default Hostlink;
