@@ -15,20 +15,20 @@ const Navbar = () => {
       path: "/vans",
       title: "Vans",
     },
-    {
-      path: "/signin",
-      title: "Sign in",
-    },
+    // {
+    //   path: "/signin",
+    //   title: "Sign in",
+    // },
   ];
 
   return (
-    <nav className="flex justify-between lg:p-10 p-5">
+    <nav className="flex justify-between lg:p-10 p-5 bg-orange-50">
       <div>
         <Link to="/">
           <img src={logo} alt="" srcset="" width={100} />
         </Link>
       </div>
-      <div className="flex lg:gap-5 gap-3">
+      <div className="flex lg:gap-5 gap-5">
         {activeLink.map((link) => (
           <NavLink to={link.path} className={({isActive})=>(isActive?"border-b-2 border-black font-bold":"text-gray-500")}>
             {link.title}

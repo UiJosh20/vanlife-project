@@ -25,7 +25,7 @@ const Hostlink = () => {
  
   
   return (
-    <main className="flex gap-7 lg:p-10 px-5 py-10">
+    <main className="flex gap-7 lg:p-10 px-5 py-10 bg-orange-50">
       {hostLink.map((link, i) => (
         <NavLink
           to={link.path}

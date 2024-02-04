@@ -33,6 +33,11 @@ const Vandetails = () => {
       <h4 className="mt-3 lg:w-full w-auto text-balance">
         {data.description}
       </h4>
+      <div className="py-3 ">  
+      <button className="p-3  cursor-none rounded text-white font-bold" style={{backgroundColor: data.type === 'simple' ? 'orange' : data.type === 'luxury' ? 'black' : 'green'}}>
+                {data.type}
+              </button>
+      </div>
       <div className="lg:py-3  py-3">
       <button className="lg:p-2 text-center bg-orange-500 text-white font-bold rounded p-2 lg:w-full w-full">Rent this van</button>
       </div>

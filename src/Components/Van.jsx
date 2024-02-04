@@ -19,7 +19,14 @@ const Van = () => {
   }, []);
 
   const filterVansByType = (type) => {
-    const filtered = vans.filter(van => van.type.toLowerCase() === type.toLowerCase());
+    let filtered = [];
+    if (type === 'simple') {
+      filtered = vans.filter(van => van.type.toLowerCase() === 'simple');
+    } else if (type === 'luxury') {
+      filtered = vans.filter(van => van.type.toLowerCase() === 'luxury');
+    } else if (type === 'rugged') {
+      filtered = vans.filter(van => van.type.toLowerCase() === 'rugged');
+    }
     setFilteredVans(filtered);
   };
 
@@ -34,13 +41,13 @@ const Van = () => {
       </div>
       <nav className="lg:px-10 lg:my-10 flex justify-between px-3 pb-7">
         <div className="flex lg:gap-10 gap-3">
-          <button className="bg-orange-200 p-3 lg:w-36 flex justify-center rounded" onClick={() => filterVansByType('simple')}>
+          <button className="p-3 lg:w-36 w-15 flex justify-center rounded bg-orange-200"  onClick={() => filterVansByType('simple')}>
             Simple
           </button>
-          <button className="bg-orange-200 p-3 lg:w-36  flex justify-center rounded" onClick={() => filterVansByType('luxury')}>
+          <button className="p-3 lg:w-36 w-15 flex justify-center rounded bg-orange-200"   onClick={() => filterVansByType('luxury')}>
             Luxury
           </button>
-          <button className="bg-orange-200 p-3 lg:w-36  flex justify-center rounded" onClick={() => filterVansByType('rugged')}>
+          <button className="p-3 lg:w-36 w-15 flex justify-center rounded bg-orange-200"   onClick={() => filterVansByType('rugged')}>
             Rugged
           </button>
         </div>
@@ -51,17 +58,16 @@ const Van = () => {
         </div>
       </nav>
 
-      <div className="grid   lg:grid-cols-3 gap-10 lg:px-10 py-5 px-3  rounded">
+      <div className="lg:grid   lg:grid-cols-3  lg:gap-10 lg:px-10 lg:py-5 py-3  rounded flex flex-wrap">
         {
           filteredVans.map((van) => (
-            <Link key={van.id} to={`/api/vans/${van.id}`} className="border  p-5">
-              <img src={van.imageUrl} alt={van.name} className="w-full mb-2" />
+            <Link key={van.id} to={`/api/vans/${van.id}`} className="p-5">
+              <img src={van.imageUrl} alt={van.name} className="lg:w-full mb-2 rounded-md w-36" />
               <h2 className="text-xl font-bold">{van.name}</h2>
               <p className="text-gray-600">${van.price}</p>
-              <button className="bg-orange-200 p-3 rounded">
+              <button className="p-3 rounded text-white font-bold" style={{backgroundColor: van.type === 'simple' ? 'orange' : van.type === 'luxury' ? 'black' : 'green'}}>
                 {van.type}
               </button>
-
             </Link>
           ))
         }

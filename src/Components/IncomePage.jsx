@@ -2,7 +2,9 @@
 
 const IncomePage = () => {
   return (
-    <div>IncomePage</div>
+    <main className="p-5">
+      Income page for the host page
+      </main>
   )
 }
 

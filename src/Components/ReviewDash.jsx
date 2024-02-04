@@ -2,7 +2,9 @@
 
 const ReviewDash = () => {
   return (
-    <div>ReviewDash</div>
+    <main className="p-5">
+      This is the review page for the Host
+      </main>
   )
 }
 
