@@ -12,6 +12,9 @@ import ReviewDash from "./Components/ReviewDash";
 import Signin from "./Components/Signin";
 import Notfound from "./Components/Notfound";
 import Dashvandetails from "./Components/Dashvandetails";
+import Details from "./Components/Details";
+import Pricing from "./Components/Pricing";
+import Photos from "./Components/Photos";
 
 function App() {
   return (
@@ -38,15 +41,20 @@ function App() {
             <Route path="/host" element={<Navigate to="/host/dashboard" />} />
             <Route path="/host/dashboard" element={<Dashboard />} />
             <Route path="/host/income" element={<IncomePage />} />
-            <Route path="/host/vans" element={<VanDash />} />
             <Route path="/host/reviews" element={<ReviewDash />} />
-            <Route path="/api/host/vans/:id" element={<Dashvandetails />} />
+            <Route path="/host/vans" element={<VanDash />} />
+            <Route path="/host/vans/:id" element={<Dashvandetails />}>
+              <Route path="/host/vans/:id" element={<Details />} />
+              <Route path="/host/vans/:id/pricing" element={<Pricing />} />
+              <Route path="/host/vans/:id/photos" element={<Photos />} />
+            </Route>
           </Route>
 
           <Route path="/about" element={<About />} />
           <Route path="/vans" element={<Van />} />
           <Route path="/api/vans/:id" element={<Vandetails />} />
           <Route path="*" element={<Notfound />} />
+
         </Route>
       </Routes>
     </>

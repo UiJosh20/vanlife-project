@@ -1,0 +1,45 @@
+import axios from "axios";
+import { useEffect } from "react";
+import { NavLink, useParams } from "react-router-dom";
+
+const LastNav = () => {
+  const URL = 'http://localhost:4000/api/host/vans';
+  const {id} = useParams();
+  useEffect(() => {
+    axios.get(URL).then((response) => {
+      console.log(response.data[id]);
+      // setData(response.data[id]);
+    });
+  }, [id]);
+
+  const lastLink = [
+    {
+      path: `/host/vans/${id}/`,
+      title: 'Details'
+    },
+    {
+      path: `/host/vans/${id}/pricing`,
+      title: 'Pricing'
+    },
+    {
+      path: `/host/vans/${id}/photos`,
+      title: 'Photos'
+    },
+    
+  ];
+  return (
+    <section className="flex gap-7 lg:p-10 py-4 mt-10 ">
+       {lastLink.map((link, i) => (
+        <NavLink
+          to={link.path}
+          key={i}
+          className={({ isActive }) => isActive ? "border-b-2 border-black font-bold": "text-gray-500" }
+        >
+          {link.title}
+        </NavLink>
+      ))}
+    </section>
+  )
+}
+
+export default LastNav

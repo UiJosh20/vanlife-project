@@ -29,7 +29,7 @@ const VanDash = () => {
         <div className="lg:p-10">
           {
             host.map((hostVan)=>(
-          <Link to={`/api/host/vans/${hostVan.id}`} className="bg-white p-3 flex items-center justify-between mt-3 mb-5" key={hostVan.id}>
+          <Link to={`/host/vans/${hostVan.id}`} className="bg-white p-3 flex items-center justify-between mt-3 mb-5" key={hostVan.id}>
             <div className="flex gap-5">
             <img src={hostVan.imageUrl} alt="image of a van" width={66} className="rounded-md"/>
             <div>

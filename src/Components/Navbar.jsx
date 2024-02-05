@@ -25,7 +25,7 @@ const Navbar = () => {
     <nav className="flex justify-between lg:p-10 p-5 bg-orange-50">
       <div>
         <Link to="/">
-          <img src={logo} alt="" srcset="" width={100} />
+          <img src={logo} alt=""   width={100} />
         </Link>
       </div>
       <div className="flex lg:gap-5 gap-5">

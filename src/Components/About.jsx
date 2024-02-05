@@ -4,7 +4,7 @@ const About = () => {
   return (
     <main>
       <div>
-        <img src={img} alt="" srcset="" className="w-full" />
+        <img src={img} alt=""   className="w-full" />
       </div>
       <div className="p-5">
         <h1 className=" text-2xl font-bold font-sans w-full">
