@@ -14,15 +14,15 @@ const LastNav = () => {
 
   const lastLink = [
     {
-      path: `/host/vans/${id}/`,
+      path: `details`,
       title: 'Details'
     },
     {
-      path: `/host/vans/${id}/pricing`,
+      path: `pricing`,
       title: 'Pricing'
     },
     {
-      path: `/host/vans/${id}/photos`,
+      path: `photos`,
       title: 'Photos'
     },
     

@@ -23,7 +23,6 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />
-
           <Route path="/home" element={<Navigate to="/" />} />
           <Route path="/van" element={<Navigate to="/vans" />} />
           <Route path="/signup" element={<Navigate to="/signin" />} />
@@ -43,10 +42,13 @@ function App() {
             <Route path="/host/income" element={<IncomePage />} />
             <Route path="/host/reviews" element={<ReviewDash />} />
             <Route path="/host/vans" element={<VanDash />} />
+
+
             <Route path="/host/vans/:id" element={<Dashvandetails />}>
-              <Route path="/host/vans/:id" element={<Details />} />
-              <Route path="/host/vans/:id/pricing" element={<Pricing />} />
-              <Route path="/host/vans/:id/photos" element={<Photos />} />
+              <Route path="/host/vans/:id" element={<Navigate to="details" />} />
+              <Route path="details" element={<Details />} />
+              <Route path="pricing" element={<Pricing />} />
+              <Route path="photos" element={<Photos />} />
             </Route>
           </Route>
 
@@ -54,7 +56,6 @@ function App() {
           <Route path="/vans" element={<Van />} />
           <Route path="/api/vans/:id" element={<Vandetails />} />
           <Route path="*" element={<Notfound />} />
-
         </Route>
       </Routes>
     </>
