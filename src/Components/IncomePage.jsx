@@ -1,69 +1,83 @@
+import { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
-import { useEffect } from 'react';
 
 const IncomePage = () => {
+  const chartRef = useRef(null);
+
   useEffect(() => {
-    const ctx = document.getElementById('incomeChart').getContext('2d');
+    const ctx = chartRef.current.getContext('2d');
 
-    // Get current month and year
-    const currentDate = new Date();
-    const currentMonth = currentDate.getMonth(); // 0-indexed
-    const currentYear = currentDate.getFullYear();
-
-    // Generate month labels for the past 5 months
-    const months = [];
-    for (let i = 4; i >= 0; i--) {
-      const date = new Date(currentYear, currentMonth - i, 1);
-      const monthName = date.toLocaleString('default', { month: 'long' });
-      months.push(monthName);
-    }
-
-    // Income data for the past 5 months (sample data)
-    const incomeData = [3, 4, 2, 5, 1];
-
-    // Define colors for current and past months
-    const backgroundColors = incomeData.map((_, index) => {
-      return index === 4 ? 'rgba(255, 140, 0, 0.8)' : 'rgba(255, 140, 0, 0.5)';
-    });
-
-    // Initialize the chart
     const chart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: months,
+        labels: [
+          'Ju', 'Au', 'Se', 'Oc', 'No', 
+          new Date().toLocaleString('default', { month: 'long' }) 
+        ],
         datasets: [{
           label: 'Income',
-          data: incomeData,
-          backgroundColor: backgroundColors,
-          borderColor: 'rgba(255, 140, 0, 1)', // Border color
-          borderWidth: 1
+          data: [4,1.5,3,2.5,1.5,0.5], 
+          backgroundColor: ['#FFEAD0', '#FFEAD0', '#FFEAD0', '#FFEAD0', '#FF8C38', '#FF8C38'], 
         }]
       },
       options: {
         scales: {
           y: {
             beginAtZero: true,
-            suggestedMax: 5 // Y-axis range from 0 to 5
-          }
-        }
+            max: 5, 
+            ticks: {
+              stepSize: 1,
+              callback: value => `$${value}k`, 
+            },
+          },
+          x: {
+            grid: {
+              display: false, 
+            },
+          },
+        },
+        plugins: {
+          legend: {
+            display: false, 
+          },
+        },
       }
     });
-
-    // Clean up the chart when the component unmounts
-    return () => {
-      chart.destroy();
-    };
+    return () => chart.destroy();
   }, []);
 
-  return (
-    <main className="p-3 lg:p-10">
-      <p className="text-3xl font-bold">Income</p>
-      <p className="mt-3 text-gray-500">Last <u>30 days</u></p>
-      <div className="mt-5">
-        <canvas id="incomeChart" style={{ width: '100%', height: "200px" }}></canvas>
-      </div>
-    </main>
-  );
-};
 
-export default IncomePage;
+
+
+  return (
+    <section className="lg:p-6 p-2 mx-10">
+      <h1 className="text-2xl lg:text-4xl font-bold">Income</h1>
+
+      <p className='font-bold text-base mt-10'>Last <span className='underline'>30 Days</span></p>
+      <p className="lg:text-3xl font-bold mt-8">$2,260</p>
+
+      <main className=' lg:w-full mt-4'>
+      <canvas ref={chartRef} />
+      </main>
+      <div className='flex mt-10 mb-20 justify-between '>
+          <p><b>Your transactions (3)</b></p>
+          <p className=' font-bold'><small>Last <span className=' underline'>30 days</span></small></p>
+      </div>
+      <div className='flex mt-10 mb-20 justify-between '>
+          <p className='font-bold text-2xl'>$720</p>
+          <p className=' font-medium'>1/12/22</p>
+      </div>
+      <div className='flex mt-10 mb-20 justify-between '>
+          <p className='font-bold text-2xl'>$560</p>
+          <p className=' font-medium'>10/11/22</p>
+      </div>
+      <div className='flex mt-10 mb-20 justify-between '>
+          <p className='font-bold text-2xl'>$980</p>
+          <p className=' font-medium'>23/11/22</p>
+      </div>
+    </section>
+  );
+  
+}
+
+export default IncomePage
