@@ -9,18 +9,21 @@ import Dashboard from "./Components/Dashboard";
 import IncomePage from "./Components/IncomePage";
 import VanDash from "./Components/VanDash";
 import ReviewDash from "./Components/ReviewDash";
-import Signin from "./Components/Signin";
+
 import Notfound from "./Components/Notfound";
 import Dashvandetails from "./Components/Dashvandetails";
 import Details from "./Components/Details";
 import Pricing from "./Components/Pricing";
 import Photos from "./Components/Photos";
+import Signup from "./Components/Signup";
+import Login from "./Components/Login";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/signin" element={<Signin />} />
+      <Route path="/login" element={<Login/>} />
+        <Route path="/signin" element={<Signup />} />
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Navigate to="/" />} />
