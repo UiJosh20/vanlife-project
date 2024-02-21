@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
     <nav className="flex justify-between lg:p-10 p-5 bg-orange-50">
       <div>
-        <Link to="/">
+        <Link to="/first">
           <img src={logo} alt=""   width={100} />
         </Link>
       </div>

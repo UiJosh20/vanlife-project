@@ -16,7 +16,7 @@ const Signup = () => {
     onSubmit: values => {
       console.log(values);
    
-      navigate("/home");
+      navigate("/");
     }
   });
 
