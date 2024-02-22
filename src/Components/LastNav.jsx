@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 
 const LastNav = () => {
-  const URL = 'http://localhost:4000/api/host/vans';
+  const URL = 'https://vanlife-backend-g65y.onrender.com/api/host/vans';
   const {id} = useParams();
   useEffect(() => {
     axios.get(URL).then((response) => {

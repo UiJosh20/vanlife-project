@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
 const Pricing = () => {
-  const URL = 'http://localhost:4000/api/host/vans';
+  const URL = 'https://vanlife-backend-g65y.onrender.com/api/host/vans';
   const [det, setDet] = useState([])
   const {id} = useParams();
   useEffect(() => {

@@ -7,7 +7,7 @@ import LastNav from "./LastNav";
 const Dashvandetails = () => {
   let { id } = useParams();
   const [data, setData] = useState([]);
-  const URL = 'http://localhost:4000/api/host/vans';
+  const URL = 'https://vanlife-backend-g65y.onrender.com/api/host/vans';
 
   useEffect(() => {
     axios.get(URL).then((response) => {

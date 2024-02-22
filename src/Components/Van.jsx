@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Van = () => {
   const [vans, setVans] = useState([]);
   const [filteredVans, setFilteredVans] = useState([]);
-  const URL = 'http://localhost:4000/api/vans';
+  const URL = 'https://vanlife-backend-g65y.onrender.com/api/vans';
 
   useEffect(() => {
     axios.get(URL)
